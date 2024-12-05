@@ -16,7 +16,7 @@ public class BasePage {
         getElement(locator).click();
         getElement(locator).clear();
         getElement(locator).sendKeys(text);
-        getApp().hideKeyboard();
+        //getApp().hideKeyboard();
     }
 
     public Boolean displayStatus(By locator){
