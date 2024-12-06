@@ -1,10 +1,9 @@
 package pages;
 
 import org.openqa.selenium.By;
-import org.testng.Assert;
 
-public class LoginScreen extends BasePage{
-
+public class LoginPage extends BasePage{
+    public By WRONG_PASSWORD_TEXT = By.xpath("//android.view.View[@content-desc=\"Invalid username or password.\"]");
     public By ALLOW_BUTTON = By.id("com.android.permissioncontroller:id/permission_allow_button");
     public By TYPE_SUBDOMAIN_INPUT = By.xpath("//android.widget.EditText");
     public By GO_TO_LOGIN_BUTTON = By.xpath("//android.widget.Button[@content-desc='Go To Login']");

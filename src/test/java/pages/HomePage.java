@@ -11,4 +11,8 @@ public class HomePage extends BasePage{
     public By SUBMIT_BUTTON_ATTENDANCE = By.xpath("//android.view.View[@content-desc='Submit']");
 
     public By REMARKS_ATTENDENCE = By.xpath("//android.widget.EditText");
+    public By MENU = By.xpath("//android.view.View[@content-desc=\"Hi, Ehsanul Alam Sabbir!\n" +
+            "Explore the dashboard\"]/android.widget.ImageView[1]");
+    public By LOGOUT_BUTTON = By.xpath("//android.widget.ImageView[@content-desc=\"Log out\"]");
+    public By OUT_TIME = By.xpath("//android.widget.ImageView[@content-desc=\"Out Time\"]");
 }

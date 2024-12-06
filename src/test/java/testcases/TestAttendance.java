@@ -1,25 +1,37 @@
 package testcases;
 
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.HomePage;
-import pages.LoginScreen;
+import pages.LoginPage;
 import utilities.DriverSetup;
 
 public class TestAttendance extends DriverSetup {
-    LoginScreen loginScreen = new LoginScreen();
+    LoginPage loginPage = new LoginPage();
     HomePage homePage = new HomePage();
-    @BeforeClass
+    @BeforeMethod
     public void SetPrecondition()
     {
-        loginScreen.doLogin("ehsanul", "$p1hr*Web*pAs5#");
+
+        loginPage.doLogin("ehsanul", "$p1hr*Web*pAs5#");
     }
 
     @Test
-    public void testAddAttendance() throws InterruptedException {
+    public void testAddAttendanceInTime() throws InterruptedException {
         homePage.clickOnElement(homePage.IN_TIME);
         homePage.clickOnElement(homePage.WHILE_USING_THE_APP);
-        homePage.writeOnElement(homePage.REMARKS_ATTENDENCE,"Attendance from Appium");
+        homePage.writeOnElement(homePage.REMARKS_ATTENDENCE,"In-Time from Appium");
+        homePage.clickOnElement(homePage.SUBMIT_BUTTON_ATTENDANCE);
+        Thread.sleep(5000);
+
+    }
+
+    @Test
+    public void testAddAttendanceOutTime() throws InterruptedException {
+        homePage.clickOnElement(homePage.OUT_TIME);
+        homePage.clickOnElement(homePage.WHILE_USING_THE_APP);
+        homePage.writeOnElement(homePage.REMARKS_ATTENDENCE,"Out-Time from Appium");
         homePage.clickOnElement(homePage.SUBMIT_BUTTON_ATTENDANCE);
         Thread.sleep(5000);
 

@@ -12,7 +12,7 @@ public class BasePage {
         return getApp().findElement(locator);
     }
 
-    public void writeOnElement(By locator, String text ){
+    public void writeOnElement(By locator, String text ) {
         getElement(locator).click();
         getElement(locator).clear();
         getElement(locator).sendKeys(text);
