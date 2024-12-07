@@ -1,6 +1,6 @@
 package testcases;
 
-import org.testng.annotations.BeforeClass;
+import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.HomePage;
@@ -13,7 +13,6 @@ public class TestAttendance extends DriverSetup {
     @BeforeMethod
     public void SetPrecondition()
     {
-
         loginPage.doLogin("ehsanul", "$p1hr*Web*pAs5#");
     }
 
@@ -21,19 +20,17 @@ public class TestAttendance extends DriverSetup {
     public void testAddAttendanceInTime() throws InterruptedException {
         homePage.clickOnElement(homePage.IN_TIME);
         homePage.clickOnElement(homePage.WHILE_USING_THE_APP);
-        homePage.writeOnElement(homePage.REMARKS_ATTENDENCE,"In-Time from Appium");
+        homePage.writeOnElement(homePage.REMARKS_ATTENDANCE,"In-Time from Appium");
         homePage.clickOnElement(homePage.SUBMIT_BUTTON_ATTENDANCE);
-        Thread.sleep(5000);
-
+        Assert.assertTrue(homePage.displayStatus(homePage.ATTENDANCE_SUBMIT_SUCCESS_MODAL));
     }
 
     @Test
     public void testAddAttendanceOutTime() throws InterruptedException {
         homePage.clickOnElement(homePage.OUT_TIME);
         homePage.clickOnElement(homePage.WHILE_USING_THE_APP);
-        homePage.writeOnElement(homePage.REMARKS_ATTENDENCE,"Out-Time from Appium");
+        homePage.writeOnElement(homePage.REMARKS_ATTENDANCE,"Out-Time from Appium");
         homePage.clickOnElement(homePage.SUBMIT_BUTTON_ATTENDANCE);
-        Thread.sleep(5000);
-
+        Assert.assertTrue(homePage.displayStatus(homePage.ATTENDANCE_SUBMIT_SUCCESS_MODAL));
     }
 }

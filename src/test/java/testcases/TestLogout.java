@@ -1,5 +1,6 @@
 package testcases;
 
+import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pages.HomePage;
@@ -20,7 +21,9 @@ public class TestLogout extends DriverSetup {
     public void testLogout(){
         homePage.clickOnElement(homePage.MENU);
         homePage.clickOnElement(homePage.LOGOUT_BUTTON);
-
+        Assert.assertTrue(loginPage.displayStatus(loginPage.LOGIN_MODAL));
+        Assert.assertFalse(homePage.displayStatus(homePage.LOGOUT_BUTTON));
+        Assert.assertFalse(homePage.displayStatus(homePage.GREETINGS_TEXT));
     }
 
 }

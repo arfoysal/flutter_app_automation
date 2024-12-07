@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.By;
 
 public class LoginPage extends BasePage{
+    public By LOGIN_MODAL = By.xpath("//android.view.View[@content-desc='Login']");
     public By WRONG_PASSWORD_TEXT = By.xpath("//android.view.View[@content-desc=\"Invalid username or password.\"]");
     public By ALLOW_BUTTON = By.id("com.android.permissioncontroller:id/permission_allow_button");
     public By TYPE_SUBDOMAIN_INPUT = By.xpath("//android.widget.EditText");
