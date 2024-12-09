@@ -16,7 +16,7 @@ public class TestClaim extends DriverSetup {
     public void SetPrecondition()
     {
 
-        claimPage.navigateToClaimPage("ehsanul", "$p1hr*Web*pAs5#");
+        claimPage.navigateToClaimPage("ariful", "$p1hr*Web*pAs5#");
     }
     @Test
     public void addClaim(){
@@ -27,7 +27,7 @@ public class TestClaim extends DriverSetup {
       claimPage.writeOnElement(claimPage.ADVANCE_AMOUNT_INPUT, "50.0");
       claimPage.clickOnElement(claimPage.CLAIM_DATE_OPTION);
       claimPage.clickOnElement(claimPage.DATE_OK_BUTTON);
-      getApp().hideKeyboard();
+      //getApp().hideKeyboard();
       claimPage.clickOnElement(claimPage.CLAIM_CATEGORY_OPTION);
       claimPage.clickOnElement(claimPage.CLAIM_CATEGORY_BANK);
       claimPage.writeOnElement(claimPage.CLAIM_AMOUNT_INPUT, "50.0");
@@ -36,7 +36,7 @@ public class TestClaim extends DriverSetup {
       claimPage.clickOnElement(claimPage.TO_DATE_OPTION);
       claimPage.clickOnElement(claimPage.DATE_OK_BUTTON);
       claimPage.writeOnElement(claimPage.DESCRIPTION_INPUT, "Claim details added by appium");
-      getApp().hideKeyboard();
+      //getApp().hideKeyboard();
       claimPage.clickOnElement(claimPage.ADD_BUTTON);
       claimPage.swipeUp();
       claimPage.clickOnElement(claimPage.CLAIM_SUBMIT_BUTTON);

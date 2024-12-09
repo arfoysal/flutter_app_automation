@@ -38,24 +38,25 @@ public class BasePage {
         getElement(locator).click();
     }
     public void swipeUp() {
-        // Get screen dimensions
+        // Get screen size
         Dimension size = getApp().manage().window().getSize();
 
-        int startX = size.width / 2;
-        int startY = (int) (size.height * 0.8); // 80% from the top
-        int endY = (int) (size.height * 0.2);  // 20% from the top
+        // Coordinates for the swipe
+        int startX = size.width / 2; // Horizontal center
+        int startY = (int) (size.height * 0.8); // Start point (80% from top)
+        int endY = (int) (size.height * 0.2);   // End point (20% from top)
 
         // Perform swipe
         new TouchAction<>(getApp())
-                .press(PointOption.point(startX, startY))
-                .waitAction(WaitOptions.waitOptions(Duration.ofSeconds(1)))
-                .moveTo(PointOption.point(startX, endY))
-                .release()
+                .press(PointOption.point(startX, startY)) // Start point
+                .waitAction(WaitOptions.waitOptions(Duration.ofSeconds(1500))) // Wait
+                .moveTo(PointOption.point(startX, endY)) // End point
+                .release() // Release touch
                 .perform();
     }
 
-    public void scrollAndClick(String visibleText) {
-        getApp().findElement("new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().textContains(\""+visibleText+"\").instance(0))").click();
-    }
-}
+//    public void scrollAndClick(String visibleText) {
+//        getApp().findElement("new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().textContains(\""+visibleText+"\").instance(0))").click();
+//    }
+//}
 }
