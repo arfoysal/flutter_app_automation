@@ -5,6 +5,8 @@ import org.openqa.selenium.By;
 public class HomePage extends BasePage{
 
     public By CLAIM_BUTTON = By.xpath("//android.widget.ImageView[@content-desc='Claim']");
+    public By LEAVE_BUTTON = By.xpath("//android.widget.ImageView[@content-desc=\"Leave\n" +
+            "Tab 3 of 5\"]");
     public By GREETINGS_TEXT = By.xpath("//android.view.View[@content-desc=\"Hi, Ehsanul Alam Sabbir!\n" +
             "Explore the dashboard\"]");
     public By IN_TIME = By.xpath("//android.widget.ImageView[@content-desc=\"In Time\"]\n");
