@@ -8,8 +8,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.PointerInput;
+import org.openqa.selenium.interactions.Sequence;
 
 import java.time.Duration;
+import java.util.Arrays;
 
 import static utilities.DriverSetup.getApp;
 
@@ -38,25 +41,28 @@ public class BasePage {
         getElement(locator).click();
     }
     public void swipeUp() {
-        // Get screen size
+        // Get screen dimensions
         Dimension size = getApp().manage().window().getSize();
+        int screenHeight = getApp().manage().window().getSize().getHeight();
+        int screenWidth = getApp().manage().window().getSize().getWidth();
 
-        // Coordinates for the swipe
-        int startX = size.width / 2; // Horizontal center
-        int startY = (int) (size.height * 0.8); // Start point (80% from top)
-        int endY = (int) (size.height * 0.2);   // End point (20% from top)
+        // Calculate start and end points for the swipe
+        int startX = screenWidth / 2;  // Horizontally center
+        int startY = (int) (screenHeight * 0.8); // Near the bottom
+        int endY = (int) (screenHeight * 0.2);   // Near the top
 
-        // Perform swipe
-        new TouchAction<>(getApp())
-                .press(PointOption.point(startX, startY)) // Start point
-                .waitAction(WaitOptions.waitOptions(Duration.ofSeconds(1500))) // Wait
-                .moveTo(PointOption.point(startX, endY)) // End point
-                .release() // Release touch
-                .perform();
+        // Create a pointer input for touch gestures
+        PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+
+        // Create the swipe sequence
+        Sequence swipe = new Sequence(finger, 1);
+        swipe.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, startY));
+        swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+        swipe.addAction(finger.createPointerMove(Duration.ofMillis(500), PointerInput.Origin.viewport(), startX, endY));
+        swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+
+        // Perform the swipe action
+        getApp().perform(Arrays.asList(swipe));
     }
 
-//    public void scrollAndClick(String visibleText) {
-//        getApp().findElement("new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().textContains(\""+visibleText+"\").instance(0))").click();
-//    }
-//}
 }
