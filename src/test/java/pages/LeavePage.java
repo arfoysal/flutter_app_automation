@@ -14,6 +14,4 @@ public class LeavePage extends BasePage{
     public By PURPOSE = By.xpath("//android.widget.EditText");
     public By APPLY_FOR_LEAVE_BUTTON = By.xpath("//android.widget.Button[@content-desc=\"Apply for Leave\"]");
 
-
-
 }
